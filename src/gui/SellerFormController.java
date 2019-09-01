@@ -1,7 +1,7 @@
 package gui;
 
 import java.net.URL;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,14 +53,11 @@ public class SellerFormController implements Initializable {
 	@FXML
 	private Label labelErrorName;
 	
-	
 	@FXML
 	private Label labelErrorEmail;
 	
-	
 	@FXML
 	private Label labelErrorBirthDate;
-	
 	
 	@FXML
 	private Label labelErrorBaseSalary;
@@ -157,9 +154,11 @@ public class SellerFormController implements Initializable {
 		txtEmail.setText(entity.getEmail());	
 		Locale.setDefault(Locale.US);
 		txtBaseSalary.setText(String.format("%.2f", entity.getBaseSalary()));
+//		dpBirthDate.setValue(LocalDateTime.ofInstant(entity.getBirthDate().toInstant(), ZoneId.systemDefault()).toLocalDate());
 		if(entity.getBirthDate() != null) {
-			dpBirthDate.setValue(LocalDate.ofInstant(entity.getBirthDate().toInstant(), ZoneId.systemDefault()));
+		dpBirthDate.setValue(LocalDateTime.ofInstant(entity.getBirthDate().toInstant(), ZoneId.systemDefault()).toLocalDate());
 		}
+		
 	}
 	
 	private void setErrorMessages(Map<String, String> errors) {
